@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Patient Report</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <div class="model-container">
+            <div class="cancer-cell-model"></div>
+        </div>
+        
+        <div class="form-container">
+            <div class="glass-card">
+                <h1 class="main-title">Patient Report</h1>
+                
+                <div class="report-section">
+                    <h3 class="section-title">Patient Information</h3>
+                    <div class="patient-info">
+                        <div class="info-grid">
+                            <div class="info-item">
+                                <span class="info-label">Patient Name</span>
+                                <span class="info-value">{{ patient['Name'] }}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Age</span>
+                                <span class="info-value">{{ patient['Age'] }}</span>
+                            </div>
+                            <div class="info-item">
+                                <span class="info-label">Gender</span>
+                                <span class="info-value">{{ patient['Gender'] }}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-section">
+                    <h3 class="section-title">Medical Parameters</h3>
+                    <div class="parameters-grid">
+                        {% for i in range(feature_names|length) %}
+                        <div class="parameter-item">
+                            <span class="parameter-label">{{ feature_names[i] }}</span>
+                            <span class="parameter-value">{{ features[i] }}</span>
+                            <span class="parameter-description">{{ feature_descriptions[feature_names[i]] }}</span>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="report-section result-section">
+                    <h3 class="section-title">Prediction Result</h3>
+                    <div class="result-card {{ result_class }}">
+                        <div class="result-content">
+                            <span class="result-text">{{ result }}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-buttons">
+                    <a href="/" class="action-btn back-btn">
+                        <span>Back to Form</span>
+                        <div class="btn-glow"></div>
+                    </a>
+                    <button class="action-btn print-btn" onclick="window.print()">
+                        <span>Print Report</span>
+                        <div class="btn-glow"></div>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

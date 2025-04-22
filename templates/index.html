@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Disease Prediction</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-container">
+        <div class="model-container">
+            <!-- 3D Model placeholder - will be implemented with Three.js -->
+            <div class="cancer-cell-model"></div>
+        </div>
+        
+        <div class="form-container">
+            <div class="glass-card">
+                <h1 class="main-title">Heart Disease Prediction</h1>
+                
+                <form action="/predict" method="POST" class="prediction-form">
+                    <div class="form-section">
+                        <h3 class="section-title">Patient Details</h3>
+                        <div class="row mb-4">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label>Patient Name</label>
+                                    <input type="text" name="patient_name" class="form-control modern-input" required>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Age (Years)</label>
+                                    <input type="number" name="age" class="form-control modern-input" required>
+                                </div>
+                            </div>
+                            <div class="col-md-3">
+                                <div class="form-group">
+                                    <label>Gender</label>
+                                    <select name="gender" class="form-control modern-input" required>
+                                        <option value="0">Female</option>
+                                        <option value="1">Male</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-section">
+                        <h3 class="section-title">Medical Parameters</h3>
+                        <div class="features-grid">
+                            <div class="form-group">
+                                <label>Chest Pain Type (0-3)</label>
+                                <input type="number" name="cp" class="form-control modern-input" min="0" max="3" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Resting BP (mmHg)</label>
+                                <input type="number" name="trestbps" class="form-control modern-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Cholesterol (mg/dl)</label>
+                                <input type="number" name="chol" class="form-control modern-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Fasting Blood Sugar (>120 mg/dl)</label>
+                                <select name="fbs" class="form-control modern-input" required>
+                                    <option value="0">≤ 120 mg/dl</option>
+                                    <option value="1">> 120 mg/dl</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Resting ECG</label>
+                                <input type="number" name="restecg" class="form-control modern-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Max Heart Rate</label>
+                                <input type="number" name="thalach" class="form-control modern-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Exercise-Induced Angina</label>
+                                <select name="exang" class="form-control modern-input" required>
+                                    <option value="0">No</option>
+                                    <option value="1">Yes</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>ST Depression</label>
+                                <input type="number" step="0.1" name="oldpeak" class="form-control modern-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Slope of Peak ST</label>
+                                <input type="number" name="slope" class="form-control modern-input" required>
+                            </div>
+                            <div class="form-group">
+                                <label>No. of Major Vessels (0-4)</label>
+                                <input type="number" name="ca" class="form-control modern-input" min="0" max="4" step="0.1" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Thalassemia Type</label>
+                                <input type="number" name="thal" class="form-control modern-input" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="submit-container">
+                        <button type="submit" class="submit-btn">
+                            <span>Predict</span>
+                            <div class="btn-glow"></div>
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
